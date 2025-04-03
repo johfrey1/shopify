@@ -1,0 +1,15 @@
+.main {
+  background-color: black;
+  .main__container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    background-color: black;
+  }
+  .marquee {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 25s linear infinite;
+  }
+}

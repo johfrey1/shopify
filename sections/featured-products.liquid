@@ -1,8 +1,24 @@
-<section class="featured-products">
-  <h2>{{ settings['featured-products'].settings.heading }}</h2>
-  <div class="product-list">
+<section class="products">
+  <div class="products__grid">
     {% for product in products %}
-      {% render 'product-card', product: product %}
+      <div class="product-card{% if forloop.index > 4 %} is-hidden{% endif %}">
+        <div class="product-card__image-wrapper">
+          <img class="product-card__image" src="/assets/{{ product.image }}" alt="{{ product.title }}" />
+        </div>
+        <div class="product-card__info">
+          <h3 class="product-card__title">{{ product.title }}</h3>
+          <p class="product-card__price">${{ product.price }} USD</p>
+          <ul class="product-card__tags">
+            {% for tag in product.tags %}
+              <li class="product-card__tag">{{ tag }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
     {% endfor %}
+  </div>
+
+  <div class="products__footer">
+    <button class="products__btn" id="toggleProducts">VIEW ALL</button>
   </div>
 </section>

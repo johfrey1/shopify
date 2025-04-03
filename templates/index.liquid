@@ -3,11 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles.css">
   <title>Shopify Simulator | Gradiweb</title>
+  <script src="/main.js"></script>
 </head>
 <body>
-  {% include 'featured-products.liquid' %}
-  <script src="/main.js"></script>
+  {% render 'topbar' %}
+  {% render 'header-section' %}
+
+  <main class="main">
+    <div class="main__container">
+      {% render 'hero-section' %}
+    </div>
+      {% render 'message' %}
+    <div class="main__container">
+      {% render 'featured-products', products: products %}
+      {% render 'collections-grid' %}
+    </div>
+  </main>
+
+  {% render 'footer' %}
 </body>
 </html>
