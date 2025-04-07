@@ -23,8 +23,11 @@
   }
 
   &__cta {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+
     display: inline-block;
-    margin-top: 2rem;
     padding: 1rem 2rem;
     background-color: #8e44ec;
     border: none;
@@ -37,6 +40,15 @@
 
     &:hover {
       background-color: #6f42c1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__cta {
+      left: 1.5rem;
+      bottom: 2rem;
+      font-size: 0.85rem;
+      padding: 0.75rem 1.5rem;
     }
   }
 

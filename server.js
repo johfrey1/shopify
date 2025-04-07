@@ -20,19 +20,14 @@ app.set("view engine", "liquid");
 
 app.use(express.static("public"));
 
+// Cargar datos JSON
 const products = require("./data/products.json");
-
-app.get("/", (req, res) => {
-  res.render("index", {
-    products,
-  });
-});
-
 const collections = require("./data/collections.json");
 const settingsSections = JSON.parse(
   fs.readFileSync("./config/settings_data.json", "utf-8")
 ).sections;
 
+// Ruta principal
 app.get("/", (req, res) => {
   res.render("index", {
     products,

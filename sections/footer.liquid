@@ -1,56 +1,80 @@
 <footer class="footer">
-  <div class="footer__container">
-
-    <!-- Columna izquierda: Logo + info -->
+  <div class="footer__block">
+    
+    <!-- Columna izquierda: Logo e info -->
     <div class="footer__column footer__column--left">
-      <div class="footer__logo">{{ section.settings.logo_text }}</div>
-      <p class="footer__text">© 2024, Shuffle.store Operated by Studio Plaid. Need help?<br />
-        Email support@shuffle.store
-      </p>
+      {% if section.settings.logo_image %}
+        <img src="/assets/{{ section.settings.logo_image }}" alt="Logo" class="footer__logo-img" />
+      {% endif %}
+
+      {% if section.settings.description %}
+        <p class="footer__description">{{ section.settings.description }}</p>
+      {% endif %}
+
+      {% if section.settings.address %}
+        <p class="footer__info">{{ section.settings.address }}</p>
+      {% endif %}
+
+      {% if section.settings.phone %}
+        <p class="footer__info"><a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></p>
+      {% endif %}
+
+      {% if section.settings.email %}
+        <p class="footer__info"><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+      {% endif %}
     </div>
 
-    <!-- Columna central: enlaces -->
+    <!-- Columna central: Menús -->
     <div class="footer__column footer__column--center">
       <nav class="footer__nav">
-        {% assign primary_links = section.settings.links | slice: 0, 4 %}
-        {% assign secondary_links = section.settings.links | slice: 4, 3 %}
-
-        <div class="footer__nav-group footer__nav-group--primary">
-          {% for link in primary_links %}
-            <a href="{{ link.url }}">{{ link.label | upcase }}</a>
+        <ul class="footer__nav-list">
+          {% for link in section.settings.links %}
+            <li><a href="{{ link.url }}">{{ link.label | upcase }}</a></li>
           {% endfor %}
-        </div>
-
-        <div class="footer__nav-group footer__nav-group--secondary">
-          {% for link in secondary_links %}
-            <a href="{{ link.url }}">{{ link.label | upcase }}</a>
+        </ul>
+        <ul class="footer__nav-sublist">
+          {% for link in section.settings.submenu_links %}
+            <li><a href="{{ link.url }}">{{ link.label | upcase }}</a></li>
           {% endfor %}
-        </div>
+        </ul>
+        <ul class="footer_nav-pay">
+          {% if section.settings.payment_icons %}
+            <div class="footer__payments">
+              <span class="footer__payment-text">{{ section.settings.payment_text }}</span>
+              {% for icon in section.settings.payment_icons %}
+                <img src="/assets/{{ icon }}" alt="Payment icon" class="footer__payment-icon" />
+              {% endfor %}
+            </div>
+          {% endif %}
+        </ul>
       </nav>
-
-      <p class="footer__payments-note">
-        We accept all major cards, PayPal & crypto
-        <img src="/assets/bitcoin.svg" alt="Bitcoin" />
-        <img src="/assets/ethereum.svg" alt="Ethereum" />
-        <img src="/assets/litecoin.svg" alt="Litecoin" />
-        <img src="/assets/dogecoin.svg" alt="Dogecoin" />
-        <img src="/assets/usdc.svg" alt="USDC" />
-      </p>
     </div>
 
-    <!-- Columna derecha: Newsletter + redes -->
+    <!-- Columna derecha: Newsletter y Redes -->
     <div class="footer__column footer__column--right">
-      <label for="newsletter" class="footer__label">Subscribe and receive drop notifications</label>
+      {% if section.settings.email_label %}
+        <label for="newsletter" class="footer__label">{{ section.settings.email_label }}</label>
+      {% endif %}
+
       <div class="footer__newsletter">
-        <input type="email" id="newsletter" placeholder="Enter Email" disabled />
+        <input
+          type="email"
+          id="newsletter"
+          placeholder="{{ section.settings.email_placeholder }}"
+          class="footer__input"
+        />
         <button class="footer__submit">→</button>
       </div>
 
-      <div class="footer__socials">
-        <a href="#">FACEBOOK</a>
-        <a href="#">X(TWITTER)</a>
-        <a href="#">INSTAGRAM</a>
-      </div>
+      {% if section.settings.socials %}
+        <div class="footer__socials">
+          {% for social in section.settings.socials %}
+            <a href="{{ social.url }}" target="_blank" rel="noopener" class="footer__social-link">
+              {{ social.label | upcase }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
 
   </div>

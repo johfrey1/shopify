@@ -19,15 +19,36 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "logo_text": "MyShopify",
+        "logo_image": "logo-footer.png",
+        "description": "© 2024, Shuffle.store Operated by Studio Plaid. Need help?",
+        "address": "1234 Shuffle St, Bogotá, Colombia",
+        "phone": "+57 300 123 4567",
+        "email": "support@shuffle.store",
+        "email_label": "Subscribe and receive drop notifications",
+        "email_placeholder": "Enter Email",
+        "payment_text": "We accept all major cards, PayPal & crypto",
+        "payment_icons": [
+          "btc.png",
+          "eth.svg",
+          "Litecoin.png",
+          "dogecoin.svg",
+          "usdc.svg"
+        ],
         "links": [
           { "label": "Home", "url": "/" },
           { "label": "Cart", "url": "/cart" },
           { "label": "All Products", "url": "/collections/all" },
-          { "label": "Collections", "url": "/collections" },
+          { "label": "Collections", "url": "/collections" }
+        ],
+        "submenu_links": [
           { "label": "Refund Policy", "url": "/refund-policy" },
           { "label": "Privacy Policy", "url": "/privacy-policy" },
           { "label": "Terms of Service", "url": "/terms-of-service" }
+        ],
+        "socials": [
+          { "label": "Facebook", "url": "https://facebook.com" },
+          { "label": "X", "url": "https://x.com" },
+          { "label": "Instagram", "url": "https://instagram.com" }
         ]
       }
     }

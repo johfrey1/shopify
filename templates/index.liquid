@@ -14,13 +14,15 @@
     <div class="main__container">
       {% render 'hero-section' %}
     </div>
-      {% render 'message' %}
+
+    {% render 'message' %}
+
     <div class="main__container">
       {% render 'featured-products', products: products %}
-      {% render 'collections-grid' %}
+      {% render 'collections-grid', collections: collections %}
     </div>
   </main>
 
-  {% render 'footer' %}
+  {% render 'footer', section: settings["footer"] %}
 </body>
 </html>

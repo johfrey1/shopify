@@ -41,9 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
-      hiddenCards.forEach((card) => {
-        card.classList.remove("is-hidden");
+      hiddenCards.forEach((card, index) => {
+        // Animación con retraso escalonado
+        setTimeout(() => {
+          card.classList.remove("is-hidden");
+          card.classList.add("fade-in"); // Agregamos animación CSS
+        }, index * 100); // Escalonar aparición
       });
+
       toggleBtn.style.display = "none";
     });
   }

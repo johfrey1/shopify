@@ -5,14 +5,17 @@
         <div class="product-card__image-wrapper">
           <img class="product-card__image" src="/assets/{{ product.image }}" alt="{{ product.title }}" />
         </div>
+
         <div class="product-card__info">
-          <h3 class="product-card__title">{{ product.title }}</h3>
-          <p class="product-card__price">${{ product.price }} USD</p>
-          <ul class="product-card__tags">
-            {% for tag in product.tags %}
-              <li class="product-card__tag">{{ tag }}</li>
-            {% endfor %}
-          </ul>
+          <div class="product-card__row">
+            <div class="product-card__text">
+              <h3 class="product-card__title">{{ product.title }}</h3>
+              <p class="product-card__price">${{ product.price }} USD</p>
+            </div>
+            <button class="product-card__cart-btn" aria-label="Add to cart">
+              <img src="/assets/cart.svg" alt="Cart icon" />
+            </button>
+          </div>
         </div>
       </div>
     {% endfor %}
