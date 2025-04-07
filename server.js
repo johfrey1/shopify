@@ -1,34 +1,38 @@
-const express = require('express');
-const { Liquid } = require('liquidjs');
-const path = require('path');
-const fs = require('fs');
+const express = require("express");
+const { Liquid } = require("liquidjs");
+const path = require("path");
+const fs = require("fs");
 
 const app = express();
 
 const engine = new Liquid({
   root: [
-    path.resolve(__dirname, 'templates'),
-    path.resolve(__dirname, 'sections'),
-    path.resolve(__dirname, 'snippets')
+    path.resolve(__dirname, "templates"),
+    path.resolve(__dirname, "sections"),
+    path.resolve(__dirname, "snippets"),
   ],
-  extname: '.liquid',
+  extname: ".liquid",
 });
 
-app.engine('liquid', engine.express());
-app.set('views', path.resolve(__dirname, 'templates'));
-app.set('view engine', 'liquid');
+app.engine("liquid", engine.express());
+app.set("views", path.resolve(__dirname, "templates"));
+app.set("view engine", "liquid");
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-const products = require('./data/products.json');
-const collections = require('./data/collections.json');
-const settings = JSON.parse(fs.readFileSync('./config/settings_data.json', 'utf-8'));
+// Cargar datos JSON
+const products = require("./data/products.json");
+const collections = require("./data/collections.json");
+const settingsSections = JSON.parse(
+  fs.readFileSync("./config/settings_data.json", "utf-8")
+).sections;
 
-app.get('/', (req, res) => {
-  res.render('index', { 
-    products, 
-    collections, 
-    settings: settings.sections
+// Ruta principal
+app.get("/", (req, res) => {
+  res.render("index", {
+    products,
+    collections,
+    settings: settingsSections,
   });
 });
 

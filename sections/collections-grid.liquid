@@ -1,0 +1,22 @@
+<section class="collections">
+  <div class="main__container">
+    <h2 class="collections__title">{{ settings.collections_title }}</h2>
+    <div class="collections__grid">
+      {% assign date_threshold = '2025-01-01' %}
+      {% for collection in collections %}
+        {% assign created = collection.created_at %}
+        {% if created > date_threshold %}
+          {% if collection.image and collection.title %}
+            <div class="collection-card">
+              <img 
+                class="collection-card__image" 
+                src="/assets/{{ collection.image }}" 
+                alt="{{ collection.title }}">
+              <p class="collection-card__title">{{ collection.title }}</p>
+            </div>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

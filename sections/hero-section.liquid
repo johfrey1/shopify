@@ -1,0 +1,13 @@
+{% assign hero_image = section.settings.background_image | default: 'hero_banner_img.avif' %}
+
+<section class="hero" style="background-image: url('/assets/{{ hero_image }}');">
+  <div class="hero__content">
+    <div class="hero__image"></div>
+    {% assign btn_text = section.settings.button_text | default: 'VIEW THE COLLECTION' %}
+    {% assign btn_link = section.settings.button_link | default: '/collections/all' %}
+    
+    <a href="{{ btn_link }}" class="hero__cta">
+      {{ btn_text }}
+    </a>
+  </div>
+</section>

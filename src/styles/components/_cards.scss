@@ -1,0 +1,30 @@
+.product-card {
+  &__title {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__price {
+    color: #fff;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__tag {
+    background-color: #8e44ec;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+}
